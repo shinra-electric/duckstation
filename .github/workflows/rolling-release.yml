@@ -86,12 +86,6 @@ jobs:
       run: |
         "C:\Program Files\7-Zip\7z.exe" a -r duckstation-windows-x64-release-symbols.zip ./bin/x64/*.pdb
 
-    - name: Upload x64 release symbols artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: "windows"
-        path: "duckstation-windows-x64-release-symbols.zip"
-
     - name: Remove extra bloat before archiving
       shell: cmd
       run: |
@@ -107,7 +101,9 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: "windows"
-        path: "duckstation-windows-x64-release.zip"
+        path: |
+          "duckstation-windows-x64-release.zip"
+          "duckstation-windows-x64-release-symbols.zip"
 
 
   windows-arm64-build:
@@ -177,12 +173,6 @@ jobs:
       run: |
         "C:\Program Files\7-Zip\7z.exe" a -r duckstation-windows-arm64-release-symbols.zip ./bin/ARM64/*.pdb
 
-    - name: Upload arm64 release symbols artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: "windows-arm64"
-        path: "duckstation-windows-arm64-release-symbols.zip"
-
     - name: Remove extra bloat before archiving
       shell: cmd
       run: |
@@ -198,7 +188,9 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: "windows-arm64"
-        path: "duckstation-windows-arm64-release.zip"
+        path: |
+          "duckstation-windows-arm64-release.zip"
+          "duckstation-windows-arm64-release-symbols.zip"
 
 
   linux-build:
